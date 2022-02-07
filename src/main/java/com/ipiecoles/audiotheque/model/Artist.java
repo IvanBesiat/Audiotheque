@@ -20,7 +20,7 @@ public class Artist {
     @Size(max = 120)
     private String name;
 
-    @OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("artist")
     private Set<Album> albums = new HashSet<>();
 
@@ -65,6 +65,6 @@ public class Artist {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), albums);
+        return Objects.hash(id, name);
     }
 }

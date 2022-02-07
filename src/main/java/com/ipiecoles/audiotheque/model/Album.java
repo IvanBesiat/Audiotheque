@@ -14,16 +14,15 @@ public class Album {
     //attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     @NotBlank
     @Size(max = 160)
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "artist_id")
-    @JsonIgnoreProperties("albums")
     private Artist artist;
 
     //getters
